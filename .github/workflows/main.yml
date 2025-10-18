@@ -60,15 +60,16 @@ jobs:
         run: |
           mkdir build_opencv
           cd build_opencv
-          cmake -G "MinGW Makefiles" ^
-                -DCMAKE_BUILD_TYPE=Release ^
-                -DCMAKE_INSTALL_PREFIX=install ^
-                -DBUILD_SHARED_LIBS=OFF ^
-                -DBUILD_EXAMPLES=ON ^
-                -DBUILD_opencv_world=ON ^
-                -DCPU_DISPATCH="" ^
-                -DWITH_OPENGL=ON ^
-                -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules ^
+          cmake -G "MinGW Makefiles" `
+                -DCMAKE_BUILD_TYPE=Release `
+                -DCMAKE_INSTALL_PREFIX=install `
+                -DBUILD_SHARED_LIBS=ON `
+                -DBUILD_EXAMPLES=ON `
+                -DBUILD_opencv_world=ON `
+                -DCPU_DISPATCH="" `
+                -DWITH_OPENGL=ON `
+                -DBUILD_DOCS=OFF `
+                -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules `
                 ../opencv
           mingw32-make -j4
           mingw32-make install
