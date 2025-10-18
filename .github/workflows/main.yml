@@ -2,7 +2,7 @@ name: Auto Build OpenCV MinGW Release
 
 on:
   schedule:
-    - cron: "0 3 * * *"   # 每天3:00检查更新
+    - cron: "0 20 * * *"   # 每天4:00（北京时间）检查更新
   workflow_dispatch:       # 可手动触发
 
 jobs:
@@ -29,10 +29,10 @@ jobs:
           $releases = Invoke-RestMethod "https://api.github.com/repos/${{ github.repository }}/releases"
           $exists = $releases | Where-Object { $_.tag_name -eq $tag }
           if ($exists) {
-            echo "🟡 Release $tag already exists. Skipping build."
+            echo "Release $tag already exists. Skipping build."
             echo "skip=true" >> $env:GITHUB_OUTPUT
           } else {
-            echo "🟢 New OpenCV version $tag found. Building..."
+            echo "New OpenCV version $tag found. Building..."
             echo "skip=false" >> $env:GITHUB_OUTPUT
           }
 
@@ -90,8 +90,6 @@ jobs:
           body: |
             This is an automated OpenCV MinGW build for Windows.
 
-            **OpenCV Version:** ${{ steps.get_tag.outputs.latest }}
-            **Build Date:** ${{ github.run_started_at }}
           draft: false
           prerelease: false
         env:
