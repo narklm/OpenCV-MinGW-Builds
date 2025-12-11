@@ -63,7 +63,7 @@ jobs:
           cmake -G "MinGW Makefiles" `
                 -DCMAKE_BUILD_TYPE=Release `
                 -DCMAKE_INSTALL_PREFIX=install `
-                -DBUILD_SHARED_LIBS=ON `
+                -DBUILD_SHARED_LIBS=OFF `
                 -DBUILD_EXAMPLES=OFF `
                 -DBUILD_opencv_world=ON `
                 -DCPU_DISPATCH="" `
