@@ -2,7 +2,7 @@ name: Auto Build OpenCV MinGW Release
 
 on:
   schedule:
-    - cron: "0 20 * * *"   # 每天4:00（北京时间）检查更新
+    - cron: "0 20 * * 1"   # 每天4:00（北京时间）检查更新
   workflow_dispatch:       # 可手动触发
 
 jobs:
